@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<%- include('includes/head.ejs',{title:"Mangadex | Me"})%>
+<body>
+    <header>
+        <%- include('includes/navbar.ejs',{user:session_user})%>
+    </header>
+    <article class="main">
+        <% if(self) {%> 
+        <%- include('includes/user-detalhar-card.ejs',{edit:true,user:user,self:false})%>
+        <%} else{%>
+            <%- include('includes/user-detalhar-card.ejs',{edit:false,user:user,self:true})%>
+        <%}%>
+    </article>
+</body>
+</html>

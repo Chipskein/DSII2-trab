@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<%- include('includes/head.ejs',{title:"Mangadex | Detalhar"})%>
+<body>
+    <header>
+        <%- include('includes/navbar.ejs',{user:user})%>
+    </header>
+    <article class="main">
+        <%- include('includes/manga-detalhes.ejs',{user:user,manga:manga})%>
+        <div class="reviews">
+            <h2 align="center">Reviews</h2>
+            <% if(user){%> 
+                <div class="form-container">
+                    <form method="post" action="/review">
+                        <div class="review-card-form-container">
+                            <div class='user-img' style="background-image: url(<%=user.image%>)"></div>
+                            <div class="review-texts-div-input">
+                                <input type="text" name='review' placeholder="escreva uma review!" class="review-form-input">
+                                <input type="hidden" name="mangaid" value="<%=manga.id%>">
+                                <input type="hidden" name="userid" value="<%=user.id%>">
+                                <input type="submit" class="review-form-submit" value="->">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            <% } %> 
+        
+            <% if(manga.reviews.length>0){ %> 
+                <% manga.reviews.forEach(review=>{ %>
+                    <%- include('includes/review-card.ejs',{manager:false,user:user,review:review})%> 
+                <%})%>
+            <%} else{%>
+                <h2 align="center">Sem Reviews</h2>
+                <br>
+            <%}%>
+
+        </div>
+    </article>
+</body>
+</html>

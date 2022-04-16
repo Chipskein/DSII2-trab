@@ -1,0 +1,359 @@
+:root{
+    --primary-color:rgb(197, 112, 183);
+}
+body{
+    background-color: var(--primary-color);
+    color: white;
+}
+a{
+    text-decoration: none;
+    color: unset;
+}
+.error{
+    font-weight: bolder;
+    color: rgb(245, 87, 87);
+    font-style: italic;
+}
+.not-found{
+    font-weight: bolder;
+    text-align: center;
+    background-color: white;
+    color: black;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; 
+    -khtml-user-select: none;
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+}
+div.not-found{
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.special{
+    color: var(--primary-color)
+}
+article{
+    margin-top: 10%;
+    margin-left:5% ;
+    margin-right:5% ;
+    margin-bottom:5% ;
+}
+.logo{
+    width: 60px;
+    height: 60px;
+}
+
+.navbar{
+    background-color: white;
+    color:var(--primary-color);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.navbar-content{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    align-items: center;
+}
+.filter-submit{
+    background-color: white;
+    color:var(--primary-color);
+    border: 1px var(--primary-color) solid;
+    font-weight: bolder;
+    text-align: center;
+    width: 160px;
+    height: 50px;
+}
+.navbar-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    color:var(--primary-color);
+    border: 1px var(--primary-color) solid;
+    font-weight: bolder;
+    text-align: center;
+    width: 160px;
+    height: 50px;
+}
+.navbar-button:hover{
+    background-color: var(--primary-color);
+    color: white;
+    text-shadow: 2px 2px black;
+    font-weight: bolder;
+}
+.search-input{
+    width: 350px;
+}
+.search{
+    background-color: white;
+    color: var(--primary-color);
+    border: var(--primary-color) 2px solid;
+    border-radius: 20px;
+    height: 30px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.main{
+    background: white;
+    color: var(--primary-color);
+    font-weight: bolder;
+}
+.manga-image{
+    width: 300px;
+    height: 380px;
+}
+.manga-name{
+    font-family: 'Times New Roman', Times, serif1;
+    font-weight: bolder;
+    font-size: xx-large;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.459);
+}
+.manga-card{
+    margin: 2%;
+    display: flex;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.326);
+}
+.orderby-button{
+    margin: 2%;
+    cursor: pointer;
+}
+.manga-card-div{
+    width: 40%;
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.manga-form-container{
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.title{
+    font-weight: bolder;
+    font-size: xx-large;
+    color: var(--primary-color);
+}
+.manga-form{
+    background-color: white;
+    display: flex;
+    color: blueviolet;
+    flex-direction: column;
+    justify-content: center;
+    height: 650px;
+    width: 500px;
+    border-radius: 70px;
+    border: black 5px solid;
+}
+.manga-form>*{
+    margin-top: 4%;
+}
+.manga-form-input{
+    width: 350px;
+    height: 30px;
+    border-radius: 15px;
+    border: var(--primary-color) 2px solid;
+    color: var(--primary-color);
+    font-weight: bolder;
+    text-align: center;
+}
+
+.manga-form-submit{
+    width: 100px;
+    height: 30px;
+    border-radius: 80px;
+    background-color: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+.manga-form-submit:hover{
+    background-color: var(--primary-color);
+    color: white
+}
+.manga-form-textarea{
+    resize: none;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+.manga-card-delete-button{
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    border: 2px solid red;
+}
+.manga-card-delete-button:hover{
+    color: white;
+    background-color: red;
+    border: 2px solid white;
+}
+.div-navbar-double-button{
+    display: flex;
+}
+.div-navbar-double-button>a{
+    margin-left: 10px;
+}
+.user-img{
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+	background-position: center;
+	border-radius: 50%;
+    border: 1px solid var(--primary-color);
+}
+.user-img-manager{
+    width: 300px;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+	background-position: center;
+	border-radius: 50%;
+    border: 3px solid var(--primary-color);
+}
+.manga-card-edit-button{
+    color: rgb(147, 194, 76);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    border: 2px solid rgb(147, 194, 76);
+    background-color: white;
+    font-weight: bolder;
+    margin-left: 2%;
+}
+.manga-card-edit-button:hover{
+    color: white;
+    background-color: rgb(147, 194, 76);
+    border: 2px solid white;
+}
+
+.review-card{
+    margin: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    border-bottom: rgb(197, 112, 183) 1px solid;
+}
+.review-texts{
+    margin: 2%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.review-texts-div-input{
+    margin: 2%;
+    width: 80%;
+    display: flex;
+}
+.form-container{
+    display: flex;
+    justify-content: center;
+}
+.created-at{
+    color: gray;
+}
+.filter-input{
+    width: 160px;
+    border-radius: 20px;
+    border: var(--primary-color) 2px solid;
+    color: var(--primary-color);
+    font-weight: bolder;
+    text-align: center;
+}
+.filter-input2{
+    width: 60px;
+    border-radius: 20px;
+    border: var(--primary-color) 2px solid;
+    color: var(--primary-color);
+    font-weight: bolder;
+    text-align: center;
+}
+.review-card-form-container{
+    margin: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+}
+.review-form-input{
+    width: 400px;
+    height: 30px;
+    border-radius: 20px;
+    border: var(--primary-color) 2px solid;
+    color: var(--primary-color);
+    font-weight: bolder;
+    text-align: center;
+}
+
+.review-form-submit{
+    width: 50px;
+    border-radius: 80px;
+    background-color: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+.review-form-submit:hover{
+    background-color: var(--primary-color);
+    color: white
+}
+.manga-detalhes{
+    margin: 2%;
+    display: flex;
+    flex-direction: row;
+}
+.user-detalhes{
+    margin: 2%;
+    display: flex;
+    flex-direction: row;
+}
+.user-detalhes-info{
+    margin: 2%;
+}
+.manga-detalhes-image{
+    width: 380px;
+}
+.manga-detalhes-info{
+    margin: 2%;
+}
+.manga-detalhes-info>p{
+    margin-top: 5%;
+}
+.review-texts-card{
+    display: flex;
+    flex-direction: row;
+}
+.review-card-input-container{
+    display: flex;
+    flex-direction: row;
+    margin: 2%;
+}

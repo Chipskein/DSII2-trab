@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<%- include('includes/head.ejs',{title:"Mangadex | Cadastrar"})%>
+<body>
+    <div class="manga-form-container">
+        <form class="manga-form" action="" method="POST">
+            <div>
+                <div>
+                    <img class=logo src="/imgs/icon.png" alt="">
+                    <h1 class="title">MangaDex</h1>
+                </div>
+            </div>
+            <label for="manganame">
+                Nome do Manga:<br><input placeholder="Nome do Manga"class="manga-form-input" type="text" name="manganame" required>
+            </label>
+            <label for="mangaimage">
+                Imagem(link):<br><input placeholder="Link da Imagem" class="manga-form-input" type="text" name="mangaimage" required>
+            </label>
+            <label for="genres">
+                Genres:<br><input placeholder="Link da Imagem" class="manga-form-input" type="text" name="genres"  required>
+            </label>
+            <label for="authors">
+                Authors:<br><input placeholder="Link da Imagem" class="manga-form-input" type="text" name="authors"  required>
+            </label>
+            <label for="sinopse">
+                Sinopse:<br>
+                <input name="sinopse" class="manga-form-input" placeholder="Sinopse">
+            </label>
+            <div>
+                <input type="submit" value="Cadastrar" class="manga-form-submit">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

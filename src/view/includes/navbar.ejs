@@ -1,0 +1,54 @@
+<nav class="navbar">
+    <div class="navbar-content">
+        <a href="/manga">
+            <img src="/imgs/icon.png" alt="logo" class="logo">
+        </a>
+        <div>
+            <form action="/manga" method="GET">
+                <input type="text" placeholder="Search manga name" name="searchText" class="search-input search">
+                <input type="submit" value="->" class="search">
+            </form>
+        </div>
+    <div class="div-navbar-double-button">
+    <% if(user){ %>
+
+        <% if(user.role=='admin'){ %>
+            <a href="/manga/gerenciar">
+                <div class="navbar-button">
+                    Manager Manga
+                </div>
+            </a>
+            <a href="/users/gerenciar">
+                <div class="navbar-button">
+                    Manager Users
+                </div>
+            </a>
+        <%}%>
+        <a href="/review/<%=user.id%>">
+            <div class="navbar-button">
+                Manager Reviews
+            </div>
+        </a>
+        <a href="/users/logoff">
+            <div class="navbar-button">
+                Logoff
+            </div>
+        </a>
+        <a href="/users/<%=user.id%>">
+            <div class='user-img' style="background-image: url(<%=user.image%>)">
+            </div>
+        </a>
+    <%} else{%>
+            <a href="/users/login">
+                <div class="navbar-button">
+                    Login
+                </div>
+            </a>
+            <a href="/users/register">
+                <div class="navbar-button">
+                    Register
+                </div>
+            </a> 
+    <%}%> 
+    </div>
+</nav>

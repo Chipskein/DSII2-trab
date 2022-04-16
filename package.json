@@ -1,0 +1,31 @@
+{
+  "name": "polartalk",
+  "version": "1.0.0",
+  "description": "Simple group chat using node with MVC architecture and postgresql to System Development II Discipline at IFRS",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --ignore '*.json' src/index.js",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chipskein/PolarTalk.git"
+  },
+  "author": "Chipskein",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Chipskein/PolarTalk/issues"
+  },
+  "homepage": "https://github.com/Chipskein/PolarTalk#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "ejs": "^3.0.2",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "nanoid": "^3.3.1",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
