@@ -1,5 +1,8 @@
-# DSII2-trab
-### Use Cases
+# [PolarTalk](https://polartalk.herokuapp.com/)
+
+<img style="width:120px" src="https://github.com/Chipskein/PolarTalk/blob/main/public/imgs/polar-bear.png">
+
+### Use Cases (devel)
 1. Tela inicial com o nome d@ alun@ ou dupla e a listagem paginada (5 por página) de Grupos (nome do grupo + quantidade de membros)[...]
  
 2. usuário deve poder se cadastrar no sistema[...]
