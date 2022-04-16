@@ -1,4 +1,3 @@
-const fileService=require('./fileService');
 module.exports={
     isLogged:async (req,res,next)=>{
         try{    
