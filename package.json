@@ -4,7 +4,7 @@
   "description": "Simple group chat using node with MVC architecture and postgresql to System Development II Discipline at IFRS",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --ignore '*.json' src/index.js",
+    "dev": "nodemon src/index.js",
     "start": "node src/index.js"
   },
   "repository": {
