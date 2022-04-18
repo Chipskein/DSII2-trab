@@ -10,6 +10,4 @@ dbcon.connect(err => {
         console.log("ERROR Connect with database failed",err);
     }
 });
-module.exports = {
-    dbcon
-}
+module.exports={dbcon};
