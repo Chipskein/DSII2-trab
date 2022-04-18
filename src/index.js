@@ -1,10 +1,10 @@
 console.clear();
 //imports
+require('dotenv').config();
 const express=require('express');
 const session=require('express-session');
 const app=express();
 const port=process.env.PORT || 8080;
-const dotenv=require('dotenv').config();
 //config session
 app.use(session({
     secret: 'ajfsahfjsahfjkhafjkhsajkfhasfhjksafhjksafhjksafhjksa',
