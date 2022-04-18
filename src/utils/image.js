@@ -1,10 +1,21 @@
-const imgbb_api_key='cc4a9adbc5da8cc8f1eda6e91189dbb9';
-const imgbbUploadURL=`https://api.imgbb.com/1/upload?key=${imgbb_api_key}`;
-const imgbbUploader = require("imgbb-uploader");
 const fs=require('fs');
+const {ImgurClient}=require('imgur')
+const client = new ImgurClient(
+    {
+        clientId: '430c247687d3cf1',
+        clientSecret: '8a20068c2229c2786afed30284eeb25d07a0a7df',
+    }
+);
+
+
 module.exports={
     UploadImageToIMGBB:async (file) =>{
-        const response=await imgbbUploader(imgbb_api_key,file.path)
+        const response = await client.upload(
+            {
+                image: fs.createReadStream(file.path),
+                type: 'stream',
+            }
+        );
         fs.rmSync(file.path);
         return response
     },
