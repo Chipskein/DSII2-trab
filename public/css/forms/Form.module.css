@@ -1,0 +1,92 @@
+@import url('../default.css');
+.form-img{
+    width: 60px;
+    height: 60px;
+}
+.form-container{
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.title{
+    font-weight: bolder;
+    font-size: xx-large;
+    color: var(--primary-color);
+}
+.form{
+    background-color: var(--secondary-color);
+    display: flex;
+    color: var(--text-color);
+    flex-direction: column;
+    justify-content: center;
+    height: 650px;
+    width: 500px;
+    border-radius: 70px;
+    border: var(--text-color) 2px solid;
+    box-shadow: 15px 20px 20px 15px var(--shadow-color);
+}
+.form>*{
+    margin-top: 4%;
+}
+.form-input{
+    width: 350px;
+    height: 30px;
+    border-radius: 15px;
+    border: var(--primary-color) 2px solid;
+    color: var(--primary-color);
+    font-weight: bolder;
+    text-align: center;
+}
+
+.form-submit{
+    width: 100px;
+    height: 30px;
+    border-radius: 80px;
+    background-color: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+.form-submit:hover{
+    background-color: var(--primary-color);
+    color: white
+}
+.form-textarea{
+    resize: none;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+
+
+#imgs_register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+div#img_perfil {
+    width: 90px;
+    height: 90px;
+    background-image: url("/imgs/defaultUserProfile.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    position: relative;
+}
+
+
+
+
+
+
+
+
+

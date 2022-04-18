@@ -1,6 +1,6 @@
 :root{
     --primary-color:rgb(95, 145, 219);
-    --secondary-color:rgb(197, 112, 183);
-    --text-color:rgb(197, 112, 183);
-    --shadow-color:rgb(197, 112, 183);
+    --secondary-color:rgb(255, 255, 255);
+    --text-color:rgb(63, 142, 194);
+    --shadow-color:rgba(0, 0, 0, 0.418);
 }

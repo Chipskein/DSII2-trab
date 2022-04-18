@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <%- include('includes/head.ejs',{title:"Mangadex | Login"})%>
+    <%- include('../includes/head.ejs',{title:"PolarTalk | Login",cssmodulepath:"forms/Form.module.css"})%>
 <body>
-    <div class="manga-form-container">
-        <form class="manga-form" action="/users/login" method="POST">
+    <div class="form-container">
+        <form class="form" action="/users/login" method="POST">
             <%if(error){%>
                 <h4 class="error"><%=error.message%></h4>
             <%}%>
             <div>
                 <a href="/">
                     <div>
-                        <img class=logo src="/imgs/icon.png" alt="">
-                        <h1 class="title">MangaDex</h1>
-                        <h3>Login</h3>
+                        <img class=form-img src="/imgs/icon.png" alt="">
+                        <h1 class="title">PolarTalk</h1>
+                        <h3>Sign in</h3>
                     </div>
                 </a>
             </div>
             <label for="email">
-                Email:<br><input placeholder="email@example.com"class="manga-form-input" type="email" name="email" required>
+                Email:<br><input placeholder="email@example.com"class="form-input" type="email" name="email" required>
             </label>
             <label for="password">
-                Password:<br><input placeholder="Password" class="manga-form-input" type="password" name="password" required>
+                Password:<br><input placeholder="Password" class="form-input" type="password" name="password" required>
             </label>
             <div>
-                <input type="submit" value="Login" class="manga-form-submit">
+                <input type="submit" value="Sign In" class="form-submit">
             </div>
-            <a href="/users/register">Don't have account please Register</a>
+            <a href="/users/register">Sign Up</a>
         </form>
         
     </div>

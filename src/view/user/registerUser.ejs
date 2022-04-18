@@ -1,38 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <%- include('includes/head.ejs',{title:"Mangadex | Register"})%>
+    <%- include('../includes/head.ejs',{title:"PolarTalk | Register",cssmodulepath:"forms/Form.module.css"})%>
 <body>
-    <div class="manga-form-container">
-        <form class="manga-form" action="/users/register" method="POST">
+    <div class="form-container">
+        <form class="form" action="/users/register" method="POST">
             <%if(error){%>
                 <h4 class="error"><%=error.message%></h4>
             <%}%>
             <div>
                 <a href="/">
                     <div>
-                        <img class=logo src="/imgs/icon.png" alt="">
-                        <h1 class="title">MangaDex</h1>
-                        <h3>Register</h3>
+                        <img class="form-img" src="/imgs/icon.png" alt="">
+                        <h1 class="title">PolarTalk</h1>
+                        <h3>Sign Up</h3>
                     </div>
                 </a>
             </div>
+
+
+            <div id="imgs_register">
+                
+                    <div id="img_perfil">
+                        <input id="imgInp" type="file"  name="photo" style="opacity: 0.0; position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height:100%; cursor: pointer;">
+                    </div>
+                
+            </div>
+
+
             <label for="email">
-                Email:<br><input placeholder="email@example.com"class="manga-form-input" type="email" name="email" required>
+                Email:<br><input placeholder="email@example.com"class="form-input" type="email" name="email" required>
             </label>
             <label for="name">
-                Name:<br><input placeholder="Ex:seila man"class="manga-form-input" type="text" name="name" required>
+                Name:<br><input placeholder="Ex:seila man"class="form-input" type="text" name="name" required>
             </label>
             <label for="password">
-                Password:<br><input placeholder="Password" class="manga-form-input" type="password" name="password" required>
-            </label>
-            <label for="image">
-                Image:<br><input placeholder="Image(link)" class="manga-form-input" type="text" name="image">
+                Password:<br><input placeholder="Password" class="form-input" type="password" name="password" required>
             </label>
             <div>
-                <input type="submit" value="Register" class="manga-form-submit">
+                <input type="submit" value="Sign Up" class="form-submit">
             </div>
             <br>
         </form>
     </div>
+    <script>
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            const img_perfil=document.getElementById("img_perfil");
+            if (file) {
+                img_perfil.style.backgroundImage=`url(${URL.createObjectURL(file)})`;
+            }
+            else{
+                img_perfil.style.backgroundImage="url(imgs/icons/user-icon.png)"
+            }
+        }
+    </script>
 </body>
 </html>
