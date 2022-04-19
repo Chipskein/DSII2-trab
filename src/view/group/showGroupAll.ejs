@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <%- include('../includes/head.ejs',{title:"PolarTalk | Home",cssmodulepath:"style.css"})%>
+<body>
+    <%if(user){%>
+        <%- include('../includes/navbar.ejs',{user:user})%>
+    <%} else{%>
+        <%- include('../includes/navbar.ejs',{user:false})%>
+    <%}%>    
+</body>
+</html>
