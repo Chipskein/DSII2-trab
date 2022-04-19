@@ -5,9 +5,9 @@
 ### Use Cases (devel)
 1. Tela inicial com o nome d@ alun@ ou dupla e a listagem paginada (5 por página) de Grupos (nome do grupo + quantidade de membros)[...]
  
-2. usuário deve poder se cadastrar no sistema[...]
+2. usuário deve poder se cadastrar no sistema[OK]
 
-3. O usuário deve poder se autenticar no sistema[...]
+3. O usuário deve poder se autenticar no sistema[OK]
 
 4. O usuário pode criar um grupo de usuários (tem nome e mensagens), o qual ele é ADMIN[...]
 
