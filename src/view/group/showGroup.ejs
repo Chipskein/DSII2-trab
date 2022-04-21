@@ -10,6 +10,43 @@
         <%}%>
     </header>
     <article>
+        <div class="content">
+            <div class="lateral-container">
+                <div class="sidebar-group-info">
+                    <div align="center">
+                        <br>
+                        <div style="background-image: url('<%=group.info.img%>');" class="group-img"></div>
+                    </div>
+                    <p class="group-name"><%=group.info.name%></p>
+                </div>
+
+                <div class="sidebar-group-members">
+                    
+                    <% group.members.forEach(member => { %>
+                        <div class="group-member-div">
+                            <div style="background-image: url('<%=member.userimg%>');" class="group-member-img"></div>
+                            <p><%=member.username%></p>
+                            <p><%=member.userpermissions%></p>
+                            <%=//member.userid%>
+                            <%=//member.useremail%>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+
+            <div class="lateral-container2">
+                <% group.messages.forEach(msg => { %>
+                    <div class="msg-div">
+                        <div class="msg-img"style="background-image:url('<%=msg.userimg%>');"> </div><br>
+                        <div class="msg-info">
+                            <p class="msg-username"><%=msg.username%></p><br>
+                            <p class="msg"><%=msg.message%></p><br>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+
     </article>
 </body>
 </html>

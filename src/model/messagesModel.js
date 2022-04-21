@@ -36,7 +36,7 @@ class MessagesDAO {
             console.log('Error MessageDAO.deleteMessage',{ error });
         }
     }
-    static async getAllMessagesByGroup(groupid) {  
+    static async getAllMessagesByGroup(groupid,offset=0,limit=10) {  
         const sql = `
             SELECT 
                 u.id as userid,
@@ -51,6 +51,8 @@ class MessagesDAO {
             WHERE  
                 m.groupid=$1 and
                 m.activated=true
+            LIMIT    ${limit}
+            OFFSET   ${offset}
             ;
         `;
         const values = [groupid];
