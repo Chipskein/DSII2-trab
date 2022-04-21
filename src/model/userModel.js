@@ -18,7 +18,7 @@ class UserDAO {
         const values = [user.name, user.email, user.password, user.img];
         try {
             const response=await dbcon.query(sql, values);
-            response.rows[0].id
+            return response.rows[0].id
         } catch (error) {
             console.log('Error UserDAO.registerUser',{ error });
         }
