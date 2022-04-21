@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS groups(
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW(),
     deleted_at TIMESTAMP,    
-    activated BOOLEAN,
+    activated BOOLEAN DEFAULT true,
     FOREIGN KEY (adminid) REFERENCES users(id)
 );
 CREATE TABLE IF NOT EXISTS group_members(
