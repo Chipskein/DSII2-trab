@@ -13,14 +13,14 @@ class GroupController{
   }
   static async createGroup(req,res){
     const file=req.file
-    const {name}=req.body
+    const {groupname}=req.body
     let img_link='https://polartalk.herokuapp.com/imgs/groupDefault.png';
     try{
         const mimetype=file.mimetype;
         if(mimetype=='image/gif'||mimetype=='image/png'||mimetype=='image/jpeg'){
             const response=await imageUtils.UploadImageToIMGBB(file);
             if(response.data.link) img_link=response.data.link;
-            const group=new GroupModel(null,name,req.session.user.id,img_link)
+            const group=new GroupModel(null,groupname,req.session.user.id,img_link)
             group.id=await GroupDAO.createGroup(group);
             return res.redirect('/')
         }
