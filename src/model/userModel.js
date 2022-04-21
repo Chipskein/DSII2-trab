@@ -23,7 +23,7 @@ class UserDAO {
         }
     }
     static async getInfoByEmail(email) {
-        const sql = "SELECT * FROM public.users WHERE public.users.email=$1;";
+        const sql = "SELECT * FROM public.users WHERE public.users.email=$1 and public.users.activated=true;";
         const result = await dbcon.query(sql, [email]);
         return result.rows[0];
     }
