@@ -17,7 +17,8 @@ class UserDAO {
         const sql = 'INSERT INTO public.users (name,email,password,img) VALUES ($1, $2, $3, $4) RETURNING id;';
         const values = [user.name, user.email, user.password, user.img];
         try {
-            await dbcon.query(sql, values);
+            const response=await dbcon.query(sql, values);
+            response.rows[0].id
         } catch (error) {
             console.log('Error UserDAO.registerUser',{ error });
         }
