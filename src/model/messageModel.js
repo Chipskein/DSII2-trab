@@ -10,7 +10,7 @@ class MessageModel {
 // DAO = DATA ACCESS OBJECT
 class MessageDAO {
     static async registerMessage(message) {  
-        const sql = 'INSERT INTO public.messages (txt,userid,groupid) VALUES ($1, $2, $3, $4) RETURNING id;';
+        const sql = 'INSERT INTO public.messages (txt,userid,groupid) VALUES ($1, $2, $3) RETURNING id;';
         const values = [message.txt, message.userid, message.groupid];
         try {
             const response=await dbcon.query(sql, values);
@@ -33,7 +33,7 @@ class MessageDAO {
         try {
             await dbcon.query(sql, values);
         } catch (error) {
-            console.log('Error MessageDAO.registerMessage',{ error });
+            console.log('Error MessageDAO.deleteMessage',{ error });
         }
     }
     static async getAllMessagesByGroup(groupid) {  
@@ -58,7 +58,7 @@ class MessageDAO {
             const response=await dbcon.query(sql, values);
             return response.rows;
         } catch (error) {
-            console.log('Error MessageDAO.registerMessage',{ error });
+            console.log('Error MessageDAO.getAllMessagesByGroup',{ error });
         }
     }
 }

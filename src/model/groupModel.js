@@ -5,50 +5,11 @@ class GroupModel {
         this.name = name;
         this.adminid = adminid;
         this.img = img;
-        this.created_at = new Date().toISOString();
-        this.updated_at = new Date().toISOString();
-        this.activate = 'true';
-    }
-}
-class GroupMembersModel {
-    constructor(userid,groupid,permissions) {
-        this.userid = userid;
-        this.groupid = groupid;
-        this.permissions = permissions; // RW or R
     }
 }
 
 // DAO = DATA ACCESS OBJECT
 class GroupDAO {
-
-    static async removeGroupMember(userid,groupid){
-        const sql = `
-            UPDATE 
-                group_members 
-            SET
-                exit_at=now(),
-                activated=false
-            WHERE 
-                userid=$1 and
-                groupid=$2
-            ;
-        `;
-        const values = [userid,groupid];
-        try {
-            await dbcon.query(sql, values);
-        } catch (error) {
-            console.log('Error groupDAO.removeGroupMember',{ error });
-        }
-    }
-    static async insertGroupMember(groupmember){
-        const sql = "INSERT INTO public.group_members (userid,groupid,permissions) VALUES ($1,$2,$3);";
-        const values = [groupmember.userid, groupmember.groupid,groupmember.permissions];
-        try {
-            await dbcon.query(sql, values);
-        } catch (error) {
-            console.log('Error groupDAO.insertGroupMember',{ error });
-        }
-    }
     static async deleteGroup(groupid){
         const sql = `
             UPDATE 
