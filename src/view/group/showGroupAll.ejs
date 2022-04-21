@@ -2,10 +2,47 @@
 <html lang="pt-BR">
     <%- include('../includes/head.ejs',{title:"PolarTalk | Home",cssmodulepath:"style.css"})%>
 <body>
-    <%if(user){%>
-        <%- include('../includes/navbar.ejs',{user:user})%>
-    <%} else{%>
-        <%- include('../includes/navbar.ejs',{user:false})%>
-    <%}%>    
+    <div>
+        <header>
+            <%if(user){%>
+                <%- include('../includes/navbar.ejs',{user:user})%>
+            <%} else{%>
+                <%- include('../includes/navbar.ejs',{user:false})%>
+            <%}%>
+        </header>
+        <article>
+            <%if(groups){%>
+                <%groups.forEach(group=>{%>
+                    <p><%=group.name%></p>
+                    <p><%=group.memberqt%></p>
+                    <img src="<%=group.img%>" alt="<%=group.name%> image">
+                    
+                    <%if(user){%>
+                        <%if(group.adminid==user.id){%>
+                            <p>Owner</p>
+                        <%} else if(group.users.includes(user.id)){%>
+                            <p>Member</p>
+                        <% } %> 
+                    <%}%>
+
+                <%})%>
+            <%}%>
+
+            <div>
+                <% if(countGroups){%>
+                    <% let pagesCount=Math.ceil(countGroups/5);%>
+                    <% for(c=1;c<=pagesCount;c++){%>
+                        <a href="?offset=<%=(c-1)*5 %>">
+                            <%=c%>
+                        </a>
+                    <%}%>
+                <%}%> 
+            </div>
+        </article>
+        <footer>
+            Bruno Ariel
+        </footer>
+    </div>
+
 </body>
 </html>
