@@ -1,0 +1,70 @@
+@import url('../default.css');
+
+body{
+    text-align: center;
+    background-color: var(--secondary-color) !important; 
+    color: var(--primary-color) !important;
+}
+.div-container{
+    /*background-color: var(--primary2-color);*/
+    color: var(--secondary-color);
+}
+.div-card-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+    margin: 2%;
+}
+.div-card{
+    border: solid 4px var(--primary2-color);
+    background-color: var(--secondary-color);
+    box-shadow: 10px 10px 10px 10px var(--shadow-color);
+    border-radius: 40px;
+    margin: 2%;
+    width: 400px;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.div-card-field{
+    display: hidden;
+    width: 400px;
+    height: 300px;
+    margin-top: 100px;
+    border-radius: 0px 0px 35px 35px;
+    background-color: var(--shadow-color);
+    position: relative;
+}
+.div-card-field-div{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+}
+
+.div-card-field>*{
+    margin: 2%;
+}
+.div-card-title{
+    font-weight: bolder;
+    font-size: x-large;
+}
+.div-card-subtitle{
+    font-weight: bolder;
+    font-size: large;
+}
+.owner{
+    color: greenyellow;
+}
+.member{
+    color: deeppink;
+}
+.div-page-link{
+    color: var(--primary-color);
+    font-size: xx-large;
+    font-weight: bolder;
+}

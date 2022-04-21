@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <%- include('../includes/head.ejs',{title:"PolarTalk | Home",cssmodulepath:"style.css"})%>
+    <%- include('../includes/head.ejs',{title:"PolarTalk | Home",cssmodulepath:"groups/groups.modules.css"})%>
 <body>
     <div>
         <header>
@@ -11,38 +11,50 @@
             <%}%>
         </header>
         <article>
-            <%if(groups){%>
-                <%groups.forEach(group=>{%>
-                    <p><%=group.name%></p>
-                    <p><%=group.memberqt%></p>
-                    <img src="<%=group.img%>" alt="<%=group.name%> image">
-                    
-                    <%if(user){%>
-                        <%if(group.adminid==user.id){%>
-                            <p>Owner</p>
-                        <%} else if(group.users.includes(user.id)){%>
-                            <p>Member</p>
-                        <% } %> 
-                    <%}%>
+            <div class="div-container">
+                <div class="div-card-container">
+                    <%if(groups){%>
+                        <%groups.forEach(group=>{%>
+                            <a href="/groups/<%=group.id%>">
+                                <div class="div-card" style="background-image: url('<%=group.img%>');">
+                                    <div class="div-card-field">
+                                        <div class="div-card-field-div">
+                                            <p class="div-card-title"><%=group.name%></p>
+                                            <p class="div-card-subtitle">Members:<%=group.memberqt%></p>
+                                            <%if(user){%>
+                                                <%if(group.adminid==user.id){%>
+                                                    <p class="div-card-subtitle owner">Owner</p>
+                                                <%} else if(group.users.includes(user.id)){%>
+                                                    <p class="div-card-subtitle member">Member</p>
+                                                <% } %> 
+                                            <%}%>
+                                        </div>
 
-                <%})%>
-            <%}%>
+                                    </div>
 
-            <div>
-                <% if(countGroups){%>
-                    <% let pagesCount=Math.ceil(countGroups/5);%>
-                    <% for(c=1;c<=pagesCount;c++){%>
-                        <a href="?offset=<%=(c-1)*5 %>">
-                            <%=c%>
-                        </a>
+                                </div>
+                            </a>
+                        <%})%>
                     <%}%>
-                <%}%> 
+                </div>
+                <div class="div-page-count">
+                    <% if(countGroups){%>
+                        <% let pagesCount=Math.ceil(countGroups/5);%>
+                        <% for(c=1;c<=pagesCount;c++){%>
+                            <a href="?offset=<%=(c-1)*5 %>" class="div-page-link">
+                                <%=c%>
+                            </a>
+                        <%}%>
+                    <%}%> 
+                </div>
             </div>
         </article>
         <footer>
-            Bruno Ariel
+            <a href="https://github.com/Chipskein" target="_blank">Bruno Ariel</a>
         </footer>
     </div>
-
+<script>
+    
+</script>
 </body>
 </html>
