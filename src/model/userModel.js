@@ -6,9 +6,6 @@ class UserModel {
         this.email = email;
         this.password = password;
         this.img = img;
-        //this.created_at = new Date().toISOString();
-        //this.updated_at = new Date().toISOString();
-        //this.activate = 'true';
     }
 }
 
