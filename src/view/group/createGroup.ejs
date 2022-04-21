@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <%- include('../includes/head.ejs',{title:"PolarTalk | Register",cssmodulepath:"forms/Form.module.css"})%>
+<body>
+    <div class="form-container">
+        <form class="form" action="/" method="POST" enctype='multipart/form-data'>
+            <%if(error){%>
+                <h4 class="error"><%=error.message%></h4>
+            <%}%>
+            <div>
+                <a href="/">
+                    <div>
+                        <img class="form-img" src="/imgs/icon.png" alt="">
+                        <h1 class="title">PolarTalk</h1>
+                        <h3>Create Group</h3>
+                    </div>
+                </a>
+            </div>
+
+
+            <div id="imgs_register">
+                    <div id="img_perfil" style="background-image: url('/imgs/groupDefault.png');">
+                        <input id="imgInp" type="file"  name="photo" style="opacity: 0.0; position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height:100%; cursor: pointer;">
+                    </div>
+            </div>
+            <label for="groupname">
+                Group Name:<br><input placeholder="name your new group"class="form-input" type="text" name="groupname" required>
+            </label>
+            <br>
+            <div>
+                <input type="submit" value="Done" class="form-submit">
+            </div>
+            <br>
+        </form>
+    </div>
+    <script>
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            const img_perfil=document.getElementById("img_perfil");
+            if (file) {
+                img_perfil.style.backgroundImage=`url(${URL.createObjectURL(file)})`;
+            }
+            else{
+                img_perfil.style.backgroundImage="url(/imgs/groupDefault.png)"
+            }
+        }
+    </script>
+</body>
+</html>

@@ -11,7 +11,7 @@ class GroupController{
     return res.render('group/showGroupAll',{user:req.session.user,groups:groups,countGroups:total})
   }
   static async showcreateGroup(req,res){
-    return res.render('group/createGroup')
+    return res.render('group/createGroup',{error:false})
   }
   static async createGroup(req,res){
     const data=req.body;
