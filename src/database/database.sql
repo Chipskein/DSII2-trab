@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS groups(
     activated BOOLEAN DEFAULT true,
     FOREIGN KEY (adminid) REFERENCES users(id)
 );
+
 CREATE TABLE IF NOT EXISTS group_members(
     userid INTEGER NOT NULL,
     groupid INTEGER NOT NULL,
