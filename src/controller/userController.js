@@ -36,7 +36,7 @@ class UserController{
             const hashpassword=hashSync(password,10);
             const mimetype=file.mimetype;
             if(mimetype=='image/gif'||mimetype=='image/png'||mimetype=='image/jpeg'){
-                const response=await imageUtils.UploadImageToIMGBB(file);
+                const response=await imageUtils.UploadImageToAPI(file);
                 if(response.data.link) img_link=response.data.link;
                 const user=new UserModel(null,name,email,hashpassword,img_link)
                 user.id=await UserDAO.registerUser(user);

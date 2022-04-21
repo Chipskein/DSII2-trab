@@ -1,5 +1,5 @@
 const { dbcon } = require("../database/connection");
-class MessageModel {
+class MessagesModel {
     constructor(id,txt,userid,groupid) {
         this.id = id;
         this.txt = txt;
@@ -8,7 +8,7 @@ class MessageModel {
     }
 }
 // DAO = DATA ACCESS OBJECT
-class MessageDAO {
+class MessagesDAO {
     static async registerMessage(message) {  
         const sql = 'INSERT INTO public.messages (txt,userid,groupid) VALUES ($1, $2, $3) RETURNING id;';
         const values = [message.txt, message.userid, message.groupid];
@@ -47,7 +47,7 @@ class MessageDAO {
                 m.txt as message
             FROM 
                 messages m
-                join users u on users.id=m.userid and u.activated=true
+                join users u on u.id=m.userid and u.activated=true
             WHERE  
                 m.groupid=$1 and
                 m.activated=true
@@ -64,6 +64,6 @@ class MessageDAO {
 }
 
 module.exports = {
-    MessageModel,
-    MessageDAO
+    MessagesModel,
+    MessagesDAO
 };

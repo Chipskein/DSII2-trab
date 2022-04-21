@@ -1,5 +1,5 @@
 const { dbcon } = require("../database/connection");
-class GroupMemberModel {
+class GroupMembersModel {
     constructor(userid,groupid,permissions) {
         this.userid = userid;
         this.groupid = groupid;
@@ -8,7 +8,7 @@ class GroupMemberModel {
 }
 
 // DAO = DATA ACCESS OBJECT
-class GroupMemberDAO {
+class GroupMembersDAO {
     static async removeGroupMember(userid,groupid){
         const sql = `
             UPDATE 
@@ -37,9 +37,33 @@ class GroupMemberDAO {
             console.log('Error groupDAO.insertGroupMember',{ error });
         }
     }
+    static async getGroupMembers(groupid){
+        const sql = `
+            SELECT 
+                gm.participated_at as userparticipated_at,
+                gm.permissions as userpermissions,
+                u.id as userid,
+                u.name as username,
+                u.img as userimg,
+                u.email as useremail
+            FROM 
+                group_members gm 
+                join users u on gm.userid=u.id and u.activated=true
+            where 
+                gm.groupid=$1 and
+                gm.activated=true
+        `;
+        const values = [groupid];
+        try {
+            const response=await dbcon.query(sql, values);
+            return response.rows;
+        } catch (error) {
+            console.log('Error groupDAO.insertGroupMember',{ error });
+        }
+    }
 }
 
 module.exports = {
-    GroupMemberModel,
-    GroupMemberDAO
+    GroupMembersModel,
+    GroupMembersDAO
 };

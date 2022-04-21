@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <%- include('../includes/head.ejs',{title:"PolarTalk | Home",cssmodulepath:"groups/groups.modules.css"})%>
+<body>
+    <header>
+        <%if(user){%>
+            <%- include('../includes/navbar.ejs',{user:user})%>
+        <%} else{%>
+            <%- include('../includes/navbar.ejs',{user:false})%>
+        <%}%>
+    </header>
+    <article>
+    </article>
+</body>
+</html>

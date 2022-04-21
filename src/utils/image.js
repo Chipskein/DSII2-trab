@@ -9,7 +9,7 @@ const client = new ImgurClient(
 
 
 module.exports={
-    UploadImageToIMGBB:async (file) =>{
+    UploadImageToAPI:async (file) =>{
         const response = await client.upload(
             {
                 image: fs.createReadStream(file.path),

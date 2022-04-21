@@ -32,7 +32,8 @@ class GroupDAO {
         let sql = "INSERT INTO public.groups (name,adminid,img) VALUES ($1,$2,$3) RETURNING id;";
         const values = [group.name, group.adminid,group.img];
         try {
-            await dbcon.query(sql, values);
+            const result=await dbcon.query(sql, values);
+            return result.rows[0].id;
         } catch (error) {
             console.log('Error groupDAO.createGroup',{ error });
         }
@@ -103,6 +104,25 @@ class GroupDAO {
         `;
         const result = await dbcon.query(sql,[userid]);
         return result.rows;
+    }
+    static async getGroup(groupid) {
+        const sql = `
+            select 
+                g.id,
+                g.img,
+                g.name,
+                g.adminid,
+                g.created_at,
+                g.updated_at,
+                g.activated
+            from "groups" g
+            where 
+                g.id=$1 and
+                g.activated=true
+            ;
+        `;
+        const result = await dbcon.query(sql,[groupid]);
+        return result.rows[0];
     }
 }
 

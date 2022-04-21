@@ -1,4 +1,6 @@
 const {GroupDAO,GroupModel}=require('../model/groupModel');
+const {GroupMembersDAO,GroupMembersModel}=require('../model/group_membersModel');
+const {MessagesDAO}=require('../model/messagesModel');
 const imageUtils=require('../utils/image');
 class GroupController{
   static async showGroupAll(req,res){
@@ -11,6 +13,19 @@ class GroupController{
   static async showcreateGroup(req,res){
     return res.render('group/createGroup',{error:false})
   }
+  static async showGroup(req,res){
+    const groupid= req.params.id;
+    const user=req.session.user;
+    const groupData=await GroupDAO.getGroup(groupid);
+    const groupMembers=await GroupMembersDAO.getGroupMembers(groupid);
+    const messagesGroup=await MessagesDAO.getAllMessagesByGroup(groupid);
+    const group={
+      info:groupData,
+      members:groupMembers,
+      messages:messagesGroup
+    }
+    return res.render('group/showGroup',{user:user,group:group})
+  }
   static async createGroup(req,res){
     const file=req.file
     const {groupname}=req.body
@@ -18,11 +33,13 @@ class GroupController{
     try{
         const mimetype=file.mimetype;
         if(mimetype=='image/gif'||mimetype=='image/png'||mimetype=='image/jpeg'){
-            const response=await imageUtils.UploadImageToIMGBB(file);
+            const response=await imageUtils.UploadImageToAPI(file);
             if(response.data.link) img_link=response.data.link;
-            const group=new GroupModel(null,groupname,req.session.user.id,img_link)
-            group.id=await GroupDAO.createGroup(group);
-            return res.redirect('/')
+            const group=new GroupModel(null,groupname,req.session.user.id,img_link);
+            const groupid=await GroupDAO.createGroup(group);
+            const groupmember=new GroupMembersModel(req.session.user.id,groupid,'*')
+            await GroupMembersDAO.insertGroupMember(groupmember);            
+            return res.redirect(`/groups/${groupid}`);
         }
         else throw new Error('Invalid image mimetype')
     }
