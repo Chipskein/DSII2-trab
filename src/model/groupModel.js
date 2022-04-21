@@ -14,18 +14,17 @@ class GroupModel {
 // DAO = DATA ACCESS OBJECT
 class GroupDAO {
 
-    /*
-    static async registergroup(group) {
+    
+    static async createGroup(group) {
           
-        const sql = 'INSERT INTO public.groups (name,email,password,img) VALUES ($1, $2, $3, $4) RETURNING id;';
-        const values = [group.name, group.email, group.password, group.img];
+        const sql = 'INSERT INTO public.groups (name,adminid,img) VALUES ($1,$2,$3) RETURNING id;';
+        const values = [group.name, group.adminid,group.img];
         try {
             await dbcon.query(sql, values);
         } catch (error) {
-            console.log('Error groupDAO.registergroup',{ error });
+            console.log('Error groupDAO.createGroup',{ error });
         }
     }
-    */
     static async getAllGroups(offset=0,limit=5) {
         const sql = `
             select 
