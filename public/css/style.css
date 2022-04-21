@@ -1,37 +1,3 @@
-.error{
-    font-weight: bolder;
-    color: rgb(245, 87, 87);
-    font-style: italic;
-}
-.not-found{
-    font-weight: bolder;
-    text-align: center;
-    background-color: white;
-    color: black;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none; 
-    -khtml-user-select: none;
-    -moz-user-select: none; 
-    -ms-user-select: none; 
-    user-select: none; 
-}
-div.not-found{
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0%;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-}
-.special{
-    color: var(--primary-color)
-}
-
-
 .main{
     background: white;
     color: var(--primary-color);

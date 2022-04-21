@@ -6,7 +6,7 @@ module.exports={
             else throw Error('401 | You need be logged to access this resource')
         }
         catch(err){    
-            console.log(err);
+            return res.render('error',{error:err})
         }
     },
     isGroupAdmin:async (req,res,next)=>{
@@ -16,7 +16,7 @@ module.exports={
            else throw Error('401 | Unauthorized') 
         }
         catch(err){
-            console.log(err);
+            return res.render('error',{error:err})
         }
     },
     isGroupMember:async (req,res,next)=>{
@@ -26,7 +26,7 @@ module.exports={
            else throw Error('401 | Unauthorized') 
         }
         catch(err){
-            console.log(err);
+            return res.render('error',{error:err})
 
         }
     },
@@ -37,7 +37,7 @@ module.exports={
             else throw Error('200 | You are already Logged')
         }
         catch(err){    
-            console.log(err);
+            return res.render('error',{error:err})
         }
     },
     disableCache:(req,res,next)=>{
