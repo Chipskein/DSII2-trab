@@ -2,7 +2,7 @@ const { dbcon } = require("../database/connection");
 class GroupModel {
     constructor(id,name,adminid,img) {
         this.id = id;
-        this.name = name;
+        this.name = `"${name}"`;
         this.adminid = adminid;
         this.img = img;
         this.created_at = new Date().toISOString();
