@@ -77,8 +77,9 @@ class GroupDAO {
                 g.updated_at,
                 g.activated,
                 (select count(*) from group_members gm where gm.groupid=g.id and gm.activated=true) as memberqt,
-                array_agg(gm.userid) as users
+                array_agg(gm2.userid) as users
             from "groups" g
+                left join group_members gm2 on gm2.groupid=g.id 
             where 
                 $1 in (select gm.userid from group_members gm where gm.groupid=g.id and gm.activated=true)
             group by g.id
