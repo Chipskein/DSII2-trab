@@ -10,6 +10,14 @@ class GroupController{
     const groups=await GroupDAO.getAllGroups(offset);
     return res.render('group/showGroupAll',{user:req.session.user,groups:groups,countGroups:total})
   }
+  static async showMyGroups(req,res){
+    let {offset}=req.query;
+    if(!offset) offset=0;
+    const user=req.session.user;
+    const total=await GroupDAO.countTotalGroupsByUser(user.id);
+    const groups=await GroupDAO.getAllGroupsByUser(user.id);
+    return res.render('group/showGroupAll',{user:req.session.user,groups:groups,countGroups:total})
+  }
   static async showcreateGroup(req,res){
     return res.render('group/createGroup',{error:false})
   }

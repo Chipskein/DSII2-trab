@@ -66,7 +66,7 @@ class GroupDAO {
         const result = await dbcon.query(sql);
         return result.rows[0].qt;
     }
-    static async getAllGroupsByOwner(adminid) {
+    static async getAllGroupsByUser(userid) {
         const sql = `
             select 
                 g.id,
@@ -76,35 +76,30 @@ class GroupDAO {
                 g.created_at,
                 g.updated_at,
                 g.activated,
-                (select count(*) from group_members gm where gm.groupid=g.id) as memberqt
+                (select count(*) from group_members gm where gm.groupid=g.id and gm.activated=true) as memberqt,
+                array_agg(gm2.userid) as users
             from "groups" g
             where 
-                g.adminid=$1 and
-                g.activated=true
-            group by g.id
-        `;
-        const result = await dbcon.query(sql,[adminid]);
-        return result.rows;
-    }
-    static async getAllGroupsByMember(userid) {
-        const sql = `
-                select 
-                g.id,
-                g.img,
-                g.name,
-                g.adminid,
-                g.created_at,
-                g.updated_at,
-                g.activated,
-                (select count(*) from group_members gm where gm.groupid=g.id) as memberqt
-            from "groups" g
-            where 
-                $1 in (select gm.userid from group_members gm where gm.groupid=g.id)
+                $1 in (select gm.userid from group_members gm where gm.groupid=g.id and gm.activated=true)
             group by g.id
         `;
         const result = await dbcon.query(sql,[userid]);
         return result.rows;
     }
+    static async countTotalGroupsByUser(userid) {
+        const sql = `
+            select 
+                count(*) as total
+            from "groups" g
+            where 
+                $1 in (select gm.userid from group_members gm where gm.groupid=g.id and gm.activated=true)
+            group by g.id
+        `;
+        const result = await dbcon.query(sql,[userid]);
+        return result.rows[0].total;
+    }
+
+
     static async getGroup(groupid) {
         const sql = `
             select 
