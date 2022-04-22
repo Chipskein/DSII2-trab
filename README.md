@@ -13,7 +13,7 @@
 
 5. O ADMIN do grupo pode adicionar outros membros, associando uma permissão de escrita ou leitura no grupo, informando o email do usuário. Mostrando uma mensagem de sucesso ou erro caso o usuário não exista.[...]
 
-6. O usuário administrador e usuários com permissão de escrita podem submeter mensagens no grupo.[...]
+6. O usuário administrador e usuários com permissão de escrita podem submeter mensagens no grupo.[OK]
 
 7. Os membros do grupo podem se enxergar com as suas permissões e também visualizar as mensagens (10 por página)[OK]
 
