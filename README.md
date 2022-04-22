@@ -11,7 +11,7 @@
 
 4. O usuário pode criar um grupo de usuários (tem nome e mensagens), o qual ele é ADMIN[OK]
 
-5. O ADMIN do grupo pode adicionar outros membros, associando uma permissão de escrita ou leitura no grupo, informando o email do usuário. Mostrando uma mensagem de sucesso ou erro caso o usuário não exista.[...]
+5. O ADMIN do grupo pode adicionar outros membros, associando uma permissão de escrita ou leitura no grupo, informando o email do usuário. Mostrando uma mensagem de sucesso ou erro caso o usuário não exista.[OK]
 
 6. O usuário administrador e usuários com permissão de escrita podem submeter mensagens no grupo.[OK]
 
