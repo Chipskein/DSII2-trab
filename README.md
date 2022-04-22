@@ -7,6 +7,7 @@
  * FIX CSS
  * TEST
  * Create::Remove User Buttons
+ * Create::Group ask for permissions
 
 
 ### Use Cases[DONE]
