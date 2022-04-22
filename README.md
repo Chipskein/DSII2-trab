@@ -14,4 +14,7 @@
 9. O usuário pode se remover de um grupo e, o usuário ADMIN também pode remover alguém do grupo[OK]
 10. (Deploy Heroku + O Código será avaliado em relação a organização de acordo com o que foi apresentado nas aulas[OK].
 
-### Testing[...]
+### Todo
+ INSERTS->UPSERTS
+ FIX CSS
+ TEST
