@@ -8,7 +8,8 @@
  * TEST
  * Create::Remove User Buttons
  * Create::Group ask for permissions
-
+ * FIX ERROR LOGS
+ * FIX PAGE Messages
 
 ### Use Cases[DONE]
 1. Tela inicial com o nome d@ alun@ ou dupla e a listagem paginada (5 por página) de Grupos (nome do grupo + quantidade de membros)[OK]
