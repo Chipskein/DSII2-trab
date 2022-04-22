@@ -48,10 +48,10 @@ class GroupDAO {
                 g.created_at,
                 g.updated_at,
                 g.activated,
-                (select count(*) from group_members gm where gm.groupid=g.id) as memberqt,
+                (select count(*) from group_members gm where gm.groupid=g.id and gm.activated=true) as memberqt,
                 array_agg(gm2.userid) as users
             from "groups" g
-            left join group_members gm2 on gm2.groupid=g.id 
+            left join group_members gm2 on gm2.groupid=g.id and gm2.activated=true
             where 
                 g.activated=true
             group by g.id
@@ -79,7 +79,7 @@ class GroupDAO {
                 (select count(*) from group_members gm where gm.groupid=g.id and gm.activated=true) as memberqt,
                 array_agg(gm2.userid) as users
             from "groups" g
-                left join group_members gm2 on gm2.groupid=g.id 
+                left join group_members gm2 on gm2.groupid=g.id and gm2.activated=true
             where 
                 $1 in (select gm.userid from group_members gm where gm.groupid=g.id and gm.activated=true)
             group by g.id
@@ -99,8 +99,6 @@ class GroupDAO {
         const result = await dbcon.query(sql,[userid]);
         return result.rows[0].total;
     }
-
-
     static async getGroup(groupid) {
         const sql = `
             select 

@@ -12,6 +12,18 @@ module.exports={
             return res.render('error',{error:err})
         }
     },
+    isGroupAdminOrSelf:async (req,res,next)=>{
+        try{
+           const user=req.session.user
+           const {id,userid}=req.params;
+           const group=await GroupDAO.getGroup(id);
+           if(group.adminid==user.id||userid==user.id) next();
+           else throw Error('401 | Unauthorized') 
+        }
+        catch(err){
+            return res.render('error',{error:err})
+        }
+    },
     isGroupAdmin:async (req,res,next)=>{
         try{
            const user=req.session.user

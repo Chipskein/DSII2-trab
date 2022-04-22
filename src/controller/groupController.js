@@ -54,6 +54,18 @@ class GroupController{
     await GroupMembersDAO.insertGroupMember(model);
     return res.redirect(`/groups/${groupid}`);
   }
+  static async RmMember(req,res){
+    const userLogged=req.session.user;
+    const groupid=req.params.id;
+    const userid=req.params.userid;
+    const group=await GroupDAO.getGroup(groupid);
+    if(group.adminid!=userid){
+      await GroupMembersDAO.removeGroupMember(userid,groupid);
+      await MessagesDAO.removeAllMessagesFromGroupbyUser(userid,groupid)
+      if(userid==userLogged) return res.redirect('/groups/my');
+      else return res.redirect(`/groups/${groupid}`);
+    }
+  }
   static async deleteGroup(req,res){
     return res.status(200).json("DELETE");
   }
