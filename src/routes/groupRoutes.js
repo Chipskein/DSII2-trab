@@ -10,6 +10,7 @@ router.get('/create',auth.isLogged,groupController.showcreateGroup)
 router.get('/my',auth.isLogged,groupController.showMyGroups)
 router.get('/:id',auth.isLogged,groupController.showGroup)
 router.get('/:id/addmember',auth.isLogged,auth.isGroupAdmin,groupController.showAddMember)
+router.post('/:id/addmember',auth.isLogged,auth.isGroupAdmin,groupController.AddMember)
 router.get('/:id/delete',auth.isLogged,auth.isGroupAdmin,groupController.deleteGroup)
 router.post('/create',auth.isLogged,upload.single('photo'),groupController.createGroup)
 module.exports=router;

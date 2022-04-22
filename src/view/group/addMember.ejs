@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <%- include('../includes/head.ejs',{title:"PolarTalk | Add Member",cssmodulepath:"forms/Form.module.css"})%>
+<body>
+    <div class="form-container">
+        <form class="form" action="/groups/<%=groupid%>/addMember" method="POST">
+            <%if(error){%>
+                <h4 class="error"><%=error.message%></h4>
+            <%}%>
+            <div>
+                <a href="/">
+                    <div>
+                        <img class="form-img" src="/imgs/icon.png" alt="">
+                        <h1 class="title">PolarTalk</h1>
+                        <h3>Add member</h3>
+                    </div>
+                </a>
+            </div>
+            <label for="email">
+                Email:<br><input placeholder="User email"class="form-input" type="email" name="email" required>
+            </label>
+            <label for="permissions">
+                <h3>Permissions:</h3>
+                <br>
+                Read-only<input type="radio" name="permissions" value="R" required><br>
+                Read-Write<input type="radio" name="permissions" value="RW" required><br>
+            </label>
+            <br>
+            <div>
+                <input type="submit" value="Done" class="form-submit">
+            </div>
+            <br>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,6 +1,7 @@
 const {GroupDAO,GroupModel}=require('../model/groupModel');
 const {GroupMembersDAO,GroupMembersModel}=require('../model/group_membersModel');
 const {MessagesDAO}=require('../model/messagesModel');
+const { UserDAO } = require('../model/userModel');
 const imageUtils=require('../utils/image');
 class GroupController{
   static async showGroupAll(req,res){
@@ -42,7 +43,16 @@ class GroupController{
     return res.render('group/showGroup',{user,group,isMember,permission})
   }
   static async showAddMember(req,res){
-    return res.status(200).json("SHOW ADD MEMBER FORM");
+    const groupid=req.params.id;
+    return res.render('group/addMember',{groupid,error:false})
+  }
+  static async AddMember(req,res){
+    const groupid=req.params.id;
+    const {email,permissions}=req.body;
+    const userInfo=await UserDAO.getInfoByEmail(email);
+    const model=new GroupMembersModel(userInfo.id,groupid,permissions);
+    await GroupMembersDAO.insertGroupMember(model);
+    return res.redirect(`/groups/${groupid}`);
   }
   static async deleteGroup(req,res){
     return res.status(200).json("DELETE");
