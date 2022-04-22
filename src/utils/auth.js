@@ -1,3 +1,6 @@
+const { GroupDAO } = require("../model/groupModel");
+const { GroupMembersDAO } = require("../model/group_membersModel");
+
 module.exports={
     isLogged:async (req,res,next)=>{
         try{    
@@ -12,7 +15,9 @@ module.exports={
     isGroupAdmin:async (req,res,next)=>{
         try{
            const user=req.session.user
-           if(user.role=='admin') next();
+           const {id}=req.params;
+           const group=await GroupDAO.getGroup(id);
+           if(group.adminid==user.id) next();
            else throw Error('401 | Unauthorized') 
         }
         catch(err){
@@ -22,7 +27,9 @@ module.exports={
     isGroupMember:async (req,res,next)=>{
         try{
            const user=req.session.user
-           if(user.role=='admin') next();
+           const {id}=req.params;
+           const verify=await GroupMembersDAO.verifyIfUserIsMember(user.id,id);
+           if(verify) next();
            else throw Error('401 | Unauthorized') 
         }
         catch(err){

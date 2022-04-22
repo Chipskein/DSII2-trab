@@ -61,6 +61,17 @@ class GroupMembersDAO {
             console.log('Error groupDAO.insertGroupMember',{ error });
         }
     }
+    static async verifyIfUserIsMember(userid,groupid){
+        const sql = "SELECT * FROM group_members gm WHERE gm.userid=$1 and gm.groupid=$2;";
+        const values = [userid,groupid];
+        try {
+            const response=await dbcon.query(sql, values);
+            if(response.rows.length>0) return true;
+            else return false;
+        } catch (error) {
+            console.log('Error groupDAO.insertGroupMember',{ error });
+        }
+    }
 }
 
 module.exports = {

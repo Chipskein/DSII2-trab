@@ -1,8 +1,9 @@
 const { dbcon } = require("../database/connection");
 class GroupSolicitationModel {
-    constructor(userid,groupid,status='waiting') {
+    constructor(userid,groupid,txt,status='waiting') {
         this.userid = userid;
         this.groupid = groupid;
+        this.txt
         this.status = status; // waiting || accepted || refused
     }
 }

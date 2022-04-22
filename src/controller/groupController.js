@@ -24,7 +24,14 @@ class GroupController{
       members:groupMembers,
       messages:messagesGroup
     }
-    return res.render('group/showGroup',{user:user,group:group})
+    let isMember=groupMembers.some(e => e.userid == user.id);
+    return res.render('group/showGroup',{user:user,group:group,isMember:isMember})
+  }
+  static async showAddMember(req,res){
+    return res.status(200).json("SHOW ADD MEMBER FORM");
+  }
+  static async deleteGroup(req,res){
+    return res.status(200).json("DELETE");
   }
   static async createGroup(req,res){
     const file=req.file

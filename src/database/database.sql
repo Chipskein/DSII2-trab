@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS group_solicitations(
     sended_at TIMESTAMP DEFAULT NOW(),
     answered_at TIMESTAMP,
     status VARCHAR(20) DEFAULT 'waiting',
+    txt VARCHAR(350),
     FOREIGN KEY (userid) REFERENCES users(id),
     FOREIGN KEY (groupid) REFERENCES groups(id)
 );

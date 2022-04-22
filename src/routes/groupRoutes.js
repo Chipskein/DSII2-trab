@@ -8,5 +8,7 @@ const upload=multer({dest:`${path.resolve()}/uploads`});
 router.get('/',groupController.showGroupAll)
 router.get('/create',auth.isLogged,groupController.showcreateGroup)
 router.get('/:id',auth.isLogged,groupController.showGroup)
+router.get('/:id/addmember',auth.isLogged,auth.isGroupAdmin,groupController.showAddMember)
+router.get('/:id/delete',auth.isLogged,auth.isGroupAdmin,groupController.deleteGroup)
 router.post('/create',auth.isLogged,upload.single('photo'),groupController.createGroup)
 module.exports=router;
