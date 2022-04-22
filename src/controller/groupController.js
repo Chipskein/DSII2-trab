@@ -24,6 +24,8 @@ class GroupController{
   static async showGroup(req,res){
     const groupid= req.params.id;
     const user=req.session.user;
+    let isMember=false;
+    let permission=false;
     const groupData=await GroupDAO.getGroup(groupid);
     const groupMembers=await GroupMembersDAO.getGroupMembers(groupid);
     const messagesGroup=await MessagesDAO.getAllMessagesByGroup(groupid);
@@ -32,8 +34,12 @@ class GroupController{
       members:groupMembers,
       messages:messagesGroup
     }
-    let isMember=groupMembers.some(e => e.userid == user.id);
-    return res.render('group/showGroup',{user:user,group:group,isMember:isMember})
+    let userMember=groupMembers.filter(e => e.userid == user.id)[0];
+    if(userMember){
+      isMember=true;
+      permission=userMember.userpermissions
+    }
+    return res.render('group/showGroup',{user,group,isMember,permission})
   }
   static async showAddMember(req,res){
     return res.status(200).json("SHOW ADD MEMBER FORM");

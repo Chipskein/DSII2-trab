@@ -25,14 +25,20 @@
                         <% }) %>
                     </div>
                     <div class="message-sent-form-div">
-                        <form class="message-sent-form" action="/messages" method="POST">
-                            <div class="message-sent-user-img" style="background-image:url('<%=user.img%>');" ></div>
-                            <input type="hidden" class="hidden" name="groupid" value="<%=group.info.id %>">
-                            <input type="hidden" class="hidden" name="userid" value="<%=user.id%>">
-                            <input type="text" class="form-input" name="txt" placeholder="Write a Message !">
-                            <input type="submit" class="form-submit" value="">
-                        </form>
+                        <% if (permission=='RW' || permission=='*') { %>
+                            <form class="message-sent-form" action="/messages" method="POST">
+                                <div class="message-sent-user-img" style="background-image:url('<%=user.img%>');" ></div>
+                                <input type="hidden" class="hidden" name="groupid" value="<%=group.info.id %>">
+                                <input type="hidden" class="hidden" name="userid" value="<%=user.id%>">
+                                <input type="text" class="form-input" name="txt" placeholder="Write a Message !">
+                                <input type="submit" class="form-submit" value="">
+                            </form>
+                            
+                        <% } else{%>
+                            <p>Read-Only Permission</p>
+                        <%}%>
                     </div>
+
                 </div>
                 <div class="lateral-container">
                     <div class="sidebar-group-info">
