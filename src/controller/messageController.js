@@ -1,7 +1,11 @@
-const { hashSync,compareSync} = require('bcrypt');
-const {customAlphabet }=require('nanoid');
-const nanoid=customAlphabet('1234567890',8);
+const { MessagesDAO,MessagesModel } = require("../model/messagesModel");
+MessagesDAO
 class MessageController{
-   
+   static async registerMessage(req,res){
+        const {userid,groupid,txt}=req.body;
+        const messagemodel= new MessagesModel(null,txt,userid,groupid);
+        await MessagesDAO.registerMessage(messagemodel);
+        return res.redirect(`/groups/${groupid}`);
+   }
 }
 module.exports=MessageController;

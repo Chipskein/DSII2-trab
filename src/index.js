@@ -34,7 +34,7 @@ app.use('*', (req, res, next) => {
 })
 app.use('/users',userRoutes);
 app.use('/groups',groupRoutes);
-app.use('/message',messageRoutes);
+app.use('/messages',messageRoutes);
 app.get('/',(req,res)=>res.redirect('/groups'));
 app.use('*', (req, res) => res.redirect('/NotFound.html'));
 

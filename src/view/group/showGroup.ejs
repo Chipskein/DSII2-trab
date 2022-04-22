@@ -25,7 +25,7 @@
                         <% }) %>
                     </div>
                     <div class="message-sent-form-div">
-                        <form class="message-sent-form" action="/messages/" method="POST">
+                        <form class="message-sent-form" action="/messages" method="POST">
                             <div class="message-sent-user-img" style="background-image:url('<%=user.img%>');" ></div>
                             <input type="hidden" class="hidden" name="groupid" value="<%=group.info.id %>">
                             <input type="hidden" class="hidden" name="userid" value="<%=user.id%>">
