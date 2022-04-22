@@ -15,9 +15,9 @@
 
 6. O usuário administrador e usuários com permissão de escrita podem submeter mensagens no grupo.[...]
 
-7. Os membros do grupo podem se enxergar com as suas permissões e também visualizar as mensagens (10 por página)[...]
+7. Os membros do grupo podem se enxergar com as suas permissões e também visualizar as mensagens (10 por página)[OK]
 
-8. O usuário pode ver a lista de grupos dos quais faz parte como membro ou administrador[...]
+8. O usuário pode ver a lista de grupos dos quais faz parte como membro ou administrador[OK]
 
 9. O usuário pode se remover de um grupo e, o usuário ADMIN também pode remover alguém do grupo[...]
 
