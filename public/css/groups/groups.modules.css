@@ -80,7 +80,7 @@ body{
     background-color: var(--primary-color);
     color: var(--secondary-color);
     width: 300px;
-    height: 900px;
+    height: 600px;
     border-radius: 50px;
 }
 .sidebar-group-info{
@@ -132,8 +132,13 @@ body{
 .lateral-container2{
     background-color: var(--secondary2-color); 
     width: 70%;
+    height: 600px;
     border: solid 2px var(--primary-color);  
     border-radius: 50px;
+}
+.msgs-divs{
+    height: 550px;
+    overflow-y: scroll;
 }
 .msg-div{
     margin: 2%;
@@ -156,22 +161,21 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 .message-sent-form{
     display: flex;
     justify-content: center;
     flex-direction: row;
     vertical-align: center;
     align-items: center;
+    background-color: var(--primary-color);
+    border-radius: 0px 0px 50px 50px;
 }
-.message-sent-form>input{
-    margin-left: 2%;
-    margin-bottom: 2%;
+.message-sent-form>*{
+    margin: 2%;
 }
 .message-sent-user-img{
     width: 50px;
     height: 50px;
-    margin-bottom: 2%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -195,4 +199,7 @@ body{
     background-size: contain;
     background-repeat: no-repeat;
     border: none;
+}
+.hidden{
+    display: none;
 }

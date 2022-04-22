@@ -13,28 +13,26 @@
         <% if (isMember) { %>
             <div class="content">
                 <div class="lateral-container2">
-                    <% group.messages.forEach(msg => { %>
-                        <div class="msg-div">
-                            <div class="msg-img"style="background-image:url('<%=msg.userimg%>');"> </div><br>
-                            <div class="msg-info">
-                                <p class="msg-username"><%=msg.username%></p><br>
-                                <p class="msg"><%=msg.message%></p><br>
+                    <div class="msgs-divs">
+                        <% group.messages.forEach(msg => { %>
+                            <div class="msg-div">
+                                <div class="msg-img"style="background-image:url('<%=msg.userimg%>');"> </div><br>
+                                <div class="msg-info">
+                                    <p class="msg-username"><%=msg.username%></p><br>
+                                    <p class="msg"><%=msg.message%></p><br>
+                                </div>
                             </div>
-                        </div>
-                    <% }) %>
-
-                    <div class="message-sent-form">
+                        <% }) %>
+                    </div>
+                    <div class="message-sent-form-div">
                         <form class="message-sent-form" action="/messages/" method="POST">
                             <div class="message-sent-user-img" style="background-image:url('<%=user.img%>');" ></div>
-                            <input type="hidden" name="groupid" value="<%=group.info.id %>">
-                            <input type="hidden" name="userid" value="<%=user.id%>">
+                            <input type="hidden" class="hidden" name="groupid" value="<%=group.info.id %>">
+                            <input type="hidden" class="hidden" name="userid" value="<%=user.id%>">
                             <input type="text" class="form-input" name="txt" placeholder="Write a Message !">
                             <input type="submit" class="form-submit" value="">
                         </form>
                     </div>
-
-
-
                 </div>
                 <div class="lateral-container">
                     <div class="sidebar-group-info">
