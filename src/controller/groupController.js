@@ -50,9 +50,14 @@ class GroupController{
     const groupid=req.params.id;
     const {email,permissions}=req.body;
     const userInfo=await UserDAO.getInfoByEmail(email);
-    const model=new GroupMembersModel(userInfo.id,groupid,permissions);
-    await GroupMembersDAO.insertGroupMember(model);
-    return res.redirect(`/groups/${groupid}`);
+    if(userInfo){
+      const model=new GroupMembersModel(userInfo.id,groupid,permissions);
+      await GroupMembersDAO.insertGroupMember(model);
+      return res.redirect(`/groups/${groupid}`);
+    }
+    else{
+      return res.render('group/addMember',{groupid,error:{message:"User Don't Exists"}})
+    }
   }
   static async RmMember(req,res){
     const userLogged=req.session.user;
