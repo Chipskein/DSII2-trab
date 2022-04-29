@@ -79,20 +79,21 @@ class GroupController{
     const {groupname}=req.body
     let img_link='https://polartalk.herokuapp.com/imgs/groupDefault.png';
     try{
-        const mimetype=file.mimetype;
-        if(mimetype=='image/gif'||mimetype=='image/png'||mimetype=='image/jpeg'){
-            const response=await imageUtils.UploadImageToAPI(file);
-            if(response.data.link) img_link=response.data.link;
-            const group=new GroupModel(null,groupname,req.session.user.id,img_link);
-            const groupid=await GroupDAO.createGroup(group);
-            const groupmember=new GroupMembersModel(req.session.user.id,groupid,'*')
-            await GroupMembersDAO.insertGroupMember(groupmember);            
-            return res.redirect(`/groups/${groupid}`);
+        if(file!=undefined){
+          if(file.mimetype=='image/gif'||file.mimetype=='image/png'||file.mimetype=='image/jpeg'){
+              const response=await imageUtils.UploadImageToAPI(file);
+              if(response.data.link) img_link=response.data.link;
+          }
+          else throw new Error('Invalid image mimetype')
         }
-        else throw new Error('Invalid image mimetype')
+        const group=new GroupModel(null,groupname,req.session.user.id,img_link);
+        const groupid=await GroupDAO.createGroup(group);
+        const groupmember=new GroupMembersModel(req.session.user.id,groupid,'*')
+        await GroupMembersDAO.insertGroupMember(groupmember);            
+        return res.redirect(`/groups/${groupid}`);
     }
     catch(err){
-        console.log(err.response);
+      return res.render('group/createGroup',{error:err})
     }
   }
 }

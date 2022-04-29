@@ -21,7 +21,7 @@ class UserController{
             else throw new Error("User Don't Exists");
         }
         catch(err){
-            return res.render('user/loginUser',{error:err.message})
+            return res.render('user/loginUser',{error:err})
         }
     }
     static async logoff(req,res,next){
@@ -34,20 +34,25 @@ class UserController{
         let img_link='https://polartalk.herokuapp.com/imgs/defaultUserProfile.png';
         try{
             const hashpassword=hashSync(password,10);
-            const mimetype=file.mimetype;
-            if(mimetype=='image/gif'||mimetype=='image/png'||mimetype=='image/jpeg'){
-                const response=await imageUtils.UploadImageToAPI(file);
-                if(response.data.link) img_link=response.data.link;
+            const verifyUser=await UserDAO.getInfoByEmail(email);
+            if(!verifyUser){
+                if(file!=undefined){
+                    if((file.mimetype=='image/gif'||file.mimetype=='image/png'||file.mimetype=='image/jpeg')){
+                        const response=await imageUtils.UploadImageToAPI(file);
+                        if(response.data.link) img_link=response.data.link;
+                    }
+                    else throw new Error('Invalid image mimetype');
+                }
                 const user=new UserModel(null,name,email,hashpassword,img_link)
                 user.id=await UserDAO.registerUser(user);
                 delete(user.password);
                 req.session.user=user;
-                return res.redirect('/')
+                return res.redirect('/');
             }
-            else throw new Error('Invalid image mimetype')
+            else throw new Error('User Already Exists');
         }
         catch(err){
-            console.log(err.response);
+            return res.render('user/registerUser',{error:err});
         }
     }
     static showRegisterForm(req,res,next){
