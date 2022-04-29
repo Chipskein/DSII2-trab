@@ -17,7 +17,7 @@ module.exports={
            const user=req.session.user
            const {id,userid}=req.params;
            const group=await GroupDAO.getGroup(id);
-           if(group.adminid==user.id||userid==user.id) next();
+           if(userid==user.id||group.adminid==user.id) next();
            else throw Error('401 | Unauthorized') 
         }
         catch(err){

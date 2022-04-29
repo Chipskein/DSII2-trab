@@ -54,6 +54,23 @@ class MessagesDAO {
             console.log('Error MessageDAO.removeAllMessagesFromGroupbyUser',{ error });
         }
     }
+    static async removeAllMessagesFromGroup(groupid) {  
+        const sql = `
+                UPDATE messages 
+                SET
+                    deleted_at=now(),
+                    activated=false
+                WHERE 
+                    groupid=$2
+                ;
+        `;
+        const values = [groupid];
+        try {
+            await dbcon.query(sql, values);
+        } catch (error) {
+            console.log('Error MessageDAO.removeAllMessagesFromGroup',{ error });
+        }
+    }
     static async getAllMessagesByGroup(groupid,offset=0,limit=10) {  
         const sql = `
             SELECT 

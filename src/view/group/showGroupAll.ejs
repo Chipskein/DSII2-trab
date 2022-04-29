@@ -13,7 +13,7 @@
         <article>
             <div class="div-container">
                 <div class="div-card-container">
-                    <%if(groups){%>
+                    <%if(groups&&groups.length>0){%>
                         <%groups.forEach(group=>{%>
                             <a href="/groups/<%=group.id%>">
                                 <div class="div-card" style="background-image: url('<%=group.img%>');">
@@ -35,6 +35,8 @@
                                 </div>
                             </a>
                         <%})%>
+                    <%} else{%>
+                        <h1 style="color: var(--primary-color);">No groups</h1>
                     <%}%>
                 </div>
                 <div class="div-page-count">
@@ -50,7 +52,7 @@
             </div>
         </article>
         <footer>
-            <a href="https://github.com/Chipskein" target="_blank">Bruno Ariel</a>
+            <a href="https://github.com/Chipskein/PolarTalk" target="_blank">Feito Por Bruno Ariel</a>
         </footer>
     </div>
 <script>

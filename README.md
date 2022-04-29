@@ -3,13 +3,9 @@
 <img style="width:120px" src="https://github.com/Chipskein/PolarTalk/blob/main/public/imgs/icon.png">
 
 ### Todo
- * INSERTS->UPSERTS
- * FIX CSS
- * TEST
- * Create::Remove User Buttons
- * Create::Group ask for permissions
- * FIX ERROR LOGS
  * FIX PAGE Messages
+ * FIX CSS
+ * FIX ERROR LOGS
 
 ### Use Cases[DONE]
 1. Tela inicial com o nome d@ alun@ ou dupla e a listagem paginada (5 por página) de Grupos (nome do grupo + quantidade de membros)[OK]

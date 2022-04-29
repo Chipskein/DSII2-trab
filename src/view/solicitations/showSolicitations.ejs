@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <%- include('../includes/head.ejs',{title:"PolarTalk | Home",cssmodulepath:"groups/groups.modules.css"})%>
+<body>
+    <div>
+        <header>
+            <%if(user){%>
+                <%- include('../includes/navbar.ejs',{user:user})%>
+            <%} else{%>
+                <%- include('../includes/navbar.ejs',{user:false})%>
+            <%}%>
+        </header>
+        <article>
+            <div>
+                <% if (solicitations&&solicitations.length>0) { %>                 
+                    <% solicitations.forEach(solicitation=>{%>
+                        <form action="/solicitations/update/<%=solicitation.groupid%>" method="POST">
+                            <p><%=solicitation.name%>(<%=solicitation.email%>)</p>
+                            <p><%=solicitation.img%></p>
+
+                            <p><%=solicitation.txt%> </p>
+                            <input type="hidden" name="userid" value="<%=solicitation.userid%>">
+                            Accept<input type="radio" name="status" value="accepted" required>
+                            Refuse<input type="radio" name="status" value="refused" required>
+                            <br>
+                            <input type="submit">
+                        </form>
+                    <% })%>
+                <% } else{ %>
+                    <h2>No solicitations</h2>
+                <% } %>
+            </div>
+        </article>
+    </div>
+
+</body>
+</html>

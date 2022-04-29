@@ -24,12 +24,13 @@ class GroupDAO {
         try {
             await dbcon.query(sql, values);
         } catch (error) {
-            console.log('Error groupDAO.insertGroupMember',{ error });
+            console.log('Error groupDAO.deleteGroup',{ error });
         }
     }
     static async createGroup(group) {
     
-        let sql = "INSERT INTO public.groups (name,adminid,img) VALUES ($1,$2,$3) RETURNING id;";
+        let sql = `
+        INSERT INTO groups (name,adminid,img) VALUES ($1,$2,$3) RETURNING id;`;
         const values = [group.name, group.adminid,group.img];
         try {
             const result=await dbcon.query(sql, values);
@@ -97,7 +98,9 @@ class GroupDAO {
             group by g.id
         `;
         const result = await dbcon.query(sql,[userid]);
-        return result.rows[0].total;
+        const rows=result.rows
+        if(rows.length!=0) return rows[0].total;
+        else return 0;
     }
     static async getGroup(groupid) {
         const sql = `

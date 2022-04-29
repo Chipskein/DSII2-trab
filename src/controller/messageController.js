@@ -1,5 +1,4 @@
 const { MessagesDAO,MessagesModel } = require("../model/messagesModel");
-MessagesDAO
 class MessageController{
    static async registerMessage(req,res){
         const {userid,groupid,txt}=req.body;

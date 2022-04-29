@@ -25,16 +25,30 @@ class GroupMembersDAO {
         try {
             await dbcon.query(sql, values);
         } catch (error) {
-            console.log('Error groupDAO.removeGroupMember',{ error });
+            console.log('Error GroupMembersDAO.removeGroupMember',{ error });
         }
     }
     static async insertGroupMember(groupmember){
-        const sql = "INSERT INTO public.group_members (userid,groupid,permissions) VALUES ($1,$2,$3);";
+        const sql = `
+            INSERT INTO group_members (userid,groupid,permissions) VALUES ($1,$2,$3)
+            ON CONFLICT (userid,groupid) 
+            DO 
+            UPDATE 
+            SET 
+                participated_at=NOW(),
+                exit_at=null,
+                permissions=EXCLUDED.permissions,
+                activated=true
+            ;`
+        ;
+        
+        
+        
         const values = [groupmember.userid, groupmember.groupid,groupmember.permissions];
         try {
             await dbcon.query(sql, values);
         } catch (error) {
-            console.log('Error groupDAO.insertGroupMember',{ error });
+            console.log('Error GroupMembersDAO.insertGroupMember',{ error });
         }
     }
     static async getGroupMembers(groupid){
@@ -58,18 +72,18 @@ class GroupMembersDAO {
             const response=await dbcon.query(sql, values);
             return response.rows;
         } catch (error) {
-            console.log('Error groupDAO.insertGroupMember',{ error });
+            console.log('Error GroupMembersDAO.getGroupMembers',{ error });
         }
     }
     static async verifyIfUserIsMember(userid,groupid){
-        const sql = "SELECT * FROM group_members gm WHERE gm.userid=$1 and gm.groupid=$2;";
+        const sql = "SELECT * FROM group_members gm WHERE gm.userid=$1 and gm.groupid=$2 and gm.activated=true;";
         const values = [userid,groupid];
         try {
             const response=await dbcon.query(sql, values);
             if(response.rows.length>0) return true;
             else return false;
         } catch (error) {
-            console.log('Error groupDAO.insertGroupMember',{ error });
+            console.log('Error GroupMembersDAO.verifyIfUserIsMember',{ error });
         }
     }
 }

@@ -17,6 +17,7 @@ app.use(session({
 const userRoutes=require("./routes/userRoutes.js");
 const messageRoutes=require("./routes/messageRoutes.js");
 const groupRoutes=require("./routes/groupRoutes.js");
+const solicitationRoutes=require("./routes/solicitationRoutes.js");
 
 //set view engine
 app.set('view engine','ejs');
@@ -34,6 +35,7 @@ app.use('*', (req, res, next) => {
 })
 app.use('/users',userRoutes);
 app.use('/groups',groupRoutes);
+app.use('/solicitations',solicitationRoutes);
 app.use('/messages',messageRoutes);
 app.get('/',(req,res)=>res.redirect('/groups'));
 app.use('*', (req, res) => res.redirect('/NotFound.html'));

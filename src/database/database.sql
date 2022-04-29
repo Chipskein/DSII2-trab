@@ -29,7 +29,8 @@ CREATE TABLE IF NOT EXISTS group_members(
     permissions VARCHAR(2) DEFAULT 'RW',
     activated BOOLEAN DEFAULT true,
     FOREIGN KEY (userid) REFERENCES users(id),
-    FOREIGN KEY (groupid) REFERENCES groups(id)
+    FOREIGN KEY (groupid) REFERENCES groups(id),
+    PRIMARY KEY(userid,groupid)
 );
 CREATE TABLE IF NOT EXISTS group_solicitations(
     userid INTEGER NOT NULL,
@@ -39,7 +40,8 @@ CREATE TABLE IF NOT EXISTS group_solicitations(
     status VARCHAR(20) DEFAULT 'waiting',
     txt VARCHAR(350),
     FOREIGN KEY (userid) REFERENCES users(id),
-    FOREIGN KEY (groupid) REFERENCES groups(id)
+    FOREIGN KEY (groupid) REFERENCES groups(id),
+    PRIMARY KEY(userid,groupid)
 );
 CREATE TABLE IF NOT EXISTS messages(
     id SERIAL PRIMARY KEY,
