@@ -67,7 +67,7 @@ class GroupDAO {
         const result = await dbcon.query(sql);
         return result.rows[0].qt;
     }
-    static async getAllGroupsByUser(userid) {
+    static async getAllGroupsByUser(userid,offset=0,limit=5) {
         const sql = `
             select 
                 g.id,
@@ -84,6 +84,8 @@ class GroupDAO {
             where 
                 $1 in (select gm.userid from group_members gm where gm.groupid=g.id and gm.activated=true)
             group by g.id
+            limit ${limit}
+            offset ${offset}
         `;
         const result = await dbcon.query(sql,[userid]);
         return result.rows;
@@ -92,10 +94,15 @@ class GroupDAO {
         const sql = `
             select 
                 count(*) as total
-            from "groups" g
-            where 
-                $1 in (select gm.userid from group_members gm where gm.groupid=g.id and gm.activated=true)
-            group by g.id
+            from (
+                select 
+                    *
+                    from "groups" g
+                where 
+                    $1 in (select gm.userid from group_members gm where gm.groupid=g.id and gm.activated=true)
+                group by g.id
+            )as tmp
+            ;
         `;
         const result = await dbcon.query(sql,[userid]);
         const rows=result.rows

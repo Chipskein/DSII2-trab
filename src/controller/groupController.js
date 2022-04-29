@@ -16,7 +16,7 @@ class GroupController{
     if(!offset) offset=0;
     const user=req.session.user;
     const total=await GroupDAO.countTotalGroupsByUser(user.id);
-    const groups=await GroupDAO.getAllGroupsByUser(user.id);
+    const groups=await GroupDAO.getAllGroupsByUser(user.id,offset);
     return res.render('group/showGroupAll',{user:req.session.user,groups:groups,countGroups:total})
   }
   static async showcreateGroup(req,res){
@@ -27,13 +27,17 @@ class GroupController{
     const user=req.session.user;
     let isMember=false;
     let permission=false;
+    let {offset}=req.query;
+    if(!offset) offset=0;
     const groupData=await GroupDAO.getGroup(groupid);
     const groupMembers=await GroupMembersDAO.getGroupMembers(groupid);
-    const messagesGroup=await MessagesDAO.getAllMessagesByGroup(groupid);
+    const messagesGroup=await MessagesDAO.getAllMessagesByGroup(groupid,offset);
+    const totalMessagesQt=await MessagesDAO.countTotalMessagesByGroup(groupid);
     const group={
       info:groupData,
       members:groupMembers,
-      messages:messagesGroup
+      messages:messagesGroup,
+      totalMessagesQt:totalMessagesQt
     }
     let userMember=groupMembers.filter(e => e.userid == user.id)[0];
     if(userMember){

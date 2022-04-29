@@ -80,6 +80,7 @@ body{
     background-color: var(--primary-color);
     color: var(--secondary-color);
     width: 300px;
+    height: 800px;
     border-radius: 50px;
 }
 .sidebar-group-info{
@@ -94,6 +95,8 @@ body{
 }
 .sidebar-group-members{
     margin-bottom: 2%;
+    height: 350px;
+    overflow-y: scroll;
 }
 .group-img{
     width: 200px;
@@ -134,14 +137,10 @@ body{
 .lateral-container2{
     background-color: var(--secondary2-color); 
     width: 70%;
-    height: 600px;
     border: solid 2px var(--primary-color);  
     border-radius: 50px;
 }
 .msgs-divs{
-    height: 550px;
-    overflow-y: scroll;
-    overflow-x: auto;
 }
 .msg-div{
     margin: 5%;

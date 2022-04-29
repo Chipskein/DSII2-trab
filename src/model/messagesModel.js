@@ -79,13 +79,15 @@ class MessagesDAO {
                 u.img as userimg,
                 u.name as username,
                 m.id as messageid,
-                m.txt as message
+                m.txt as message,
+                m.updated_at as messagedata
             FROM 
                 messages m
                 join users u on u.id=m.userid and u.activated=true
             WHERE  
                 m.groupid=$1 and
                 m.activated=true
+            ORDER BY m.updated_at desc
             LIMIT    ${limit}
             OFFSET   ${offset}
             ;
@@ -98,6 +100,12 @@ class MessagesDAO {
             console.log('Error MessageDAO.getAllMessagesByGroup',{ error });
         }
     }
+    static async countTotalMessagesByGroup(groupid){
+        const sql = `select count(*) as qt from messages m where m.groupid=$1 and m.activated=true;`;
+        const result = await dbcon.query(sql,[groupid]);
+        return result.rows[0].qt;
+    }
+
 }
 
 module.exports = {

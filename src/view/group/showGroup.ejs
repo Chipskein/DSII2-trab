@@ -23,6 +23,16 @@
                                 </div>
                             </div>
                         <% }) %>
+                        <div class="div-page-count">
+                            <% if(group.totalMessagesQt){%>
+                                <% let pagesCount=Math.ceil(group.totalMessagesQt/5);%>
+                                <% for(c=1;c<=pagesCount;c++){%>
+                                    <a href="?offset=<%=(c-1)*5 %>" class="div-page-link">
+                                        <%=c%>
+                                    </a>
+                                <%}%>
+                            <%}%> 
+                        </div>
                     </div>
                     <div class="message-sent-form-div">
                         <% if (permission=='RW' || permission=='*') { %>
