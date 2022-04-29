@@ -71,9 +71,6 @@ class GroupController{
       else return res.redirect(`/groups/${groupid}`);
     }
   }
-  static async deleteGroup(req,res){
-    return res.status(200).json("DELETE");
-  }
   static async createGroup(req,res){
     const file=req.file
     const {groupname}=req.body
