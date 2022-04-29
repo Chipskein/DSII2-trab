@@ -83,7 +83,7 @@
                                     <p class="group-member-username member"><%=member.username%></p>
                                 <% } %>
                                 <p class="group-member-permission"><%=member.userpermissions%></p>
-                                <% if (member.userid!=group.info.adminid) { %>
+                                <% if (user.id==group.info.adminid&&member.userid!=group.info.adminid) { %>
                                     <p class="group-member-username member"><a href="/groups/<%=group.info.id%>/rmMember/<%=member.userid%>">X</a></p>
                                 <% } %>
                             </div>

@@ -15,15 +15,15 @@
                 <% if (solicitations&&solicitations.length>0) { %>                 
                     <% solicitations.forEach(solicitation=>{%>
                         <form action="/solicitations/update/<%=solicitation.groupid%>" method="POST">
-                            <p><%=solicitation.name%>(<%=solicitation.email%>)</p>
-                            <p><%=solicitation.img%></p>
-
-                            <p><%=solicitation.txt%> </p>
+                            <div class="msg-img"style="background-image:url('<%=solicitation.img%>');"> </div><br>
+                            <div class="msg-info">
+                                <p class="msg-username"><%=solicitation.name%>(<%=solicitation.email%>)</p><br>
+                                <p class="msg"><%=solicitation.txt%> </p><br>
+                            </div>
                             <input type="hidden" name="userid" value="<%=solicitation.userid%>">
                             Accept<input type="radio" name="status" value="accepted" required>
                             Refuse<input type="radio" name="status" value="refused" required>
-                            <br>
-                            <input type="submit">
+                            <input type="submit" value=">">
                         </form>
                     <% })%>
                 <% } else{ %>
