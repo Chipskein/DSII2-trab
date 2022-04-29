@@ -16,7 +16,7 @@ module.exports={
                 type: 'stream',
             }
         );
-        fs.rmSync(file.path);
+        fs.unlinkSync(file.path);
         return response
     },
         
