@@ -75,6 +75,16 @@ class GroupMembersDAO {
             console.log('Error GroupMembersDAO.getGroupMembers',{ error });
         }
     }
+    static async getMemberPermissions(userid,groupid){
+        const sql = "SELECT * FROM group_members gm WHERE gm.userid=$1 and gm.groupid=$2 and gm.activated=true;";
+        const values = [userid,groupid];
+        try {
+            const response=await dbcon.query(sql, values);
+            return response.rows[0];
+        } catch (error) {
+            console.log('Error GroupMembersDAO.verifyIfUserIsMember',{ error });
+        }
+    }
     static async verifyIfUserIsMember(userid,groupid){
         const sql = "SELECT * FROM group_members gm WHERE gm.userid=$1 and gm.groupid=$2 and gm.activated=true;";
         const values = [userid,groupid];

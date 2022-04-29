@@ -3,7 +3,7 @@ const router=Router();
 const auth = require("../utils/auth.js");
 const solicitationController = require("../controller/solicitationController.js");
 
-router.get('/:id',auth.isLogged,auth.isGroupAdmin,solicitationController.showSolicitations);
+router.get('/:id',auth.disableCache,auth.isLogged,auth.isGroupAdmin,solicitationController.showSolicitations);
 router.post('/',auth.isLogged,solicitationController.sendSolicitation);
 router.post('/update/:id',auth.isLogged,auth.isGroupAdmin,solicitationController.updateSolicitation);
 

@@ -30,21 +30,24 @@ class GroupController{
     let {offset}=req.query;
     if(!offset) offset=0;
     const groupData=await GroupDAO.getGroup(groupid);
-    const groupMembers=await GroupMembersDAO.getGroupMembers(groupid);
-    const messagesGroup=await MessagesDAO.getAllMessagesByGroup(groupid,offset);
-    const totalMessagesQt=await MessagesDAO.countTotalMessagesByGroup(groupid);
-    const group={
-      info:groupData,
-      members:groupMembers,
-      messages:messagesGroup,
-      totalMessagesQt:totalMessagesQt
+    if(groupData){
+      const groupMembers=await GroupMembersDAO.getGroupMembers(groupid);
+      const messagesGroup=await MessagesDAO.getAllMessagesByGroup(groupid,offset);
+      const totalMessagesQt=await MessagesDAO.countTotalMessagesByGroup(groupid);
+      const group={
+        info:groupData,
+        members:groupMembers,
+        messages:messagesGroup,
+        totalMessagesQt:totalMessagesQt
+      }
+      let userMember=groupMembers.filter(e => e.userid == user.id)[0];
+      if(userMember){
+        isMember=true;
+        permission=userMember.userpermissions
+      }
+      return res.render('group/showGroup',{user,group,isMember,permission})
     }
-    let userMember=groupMembers.filter(e => e.userid == user.id)[0];
-    if(userMember){
-      isMember=true;
-      permission=userMember.userpermissions
-    }
-    return res.render('group/showGroup',{user,group,isMember,permission})
+    else res.redirect('/groups');
   }
   static async showAddMember(req,res){
     const groupid=req.params.id;
