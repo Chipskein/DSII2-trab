@@ -3,7 +3,6 @@
 <img style="width:120px" src="https://github.com/Chipskein/PolarTalk/blob/main/public/imgs/icon.png">
 
 ### Todo
- * FIX PAGE Messages
  * FIX CSS
 
 ### Use Cases[DONE]
