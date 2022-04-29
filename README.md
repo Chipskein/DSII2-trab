@@ -2,17 +2,13 @@
 
 <img style="width:120px" src="https://github.com/Chipskein/PolarTalk/blob/main/public/imgs/icon.png">
 
-### Todo
- * FIX CSS
-
-### Use Cases[DONE]
-1. Tela inicial com o nome d@ alun@ ou dupla e a listagem paginada (5 por página) de Grupos (nome do grupo + quantidade de membros)[OK]
-2. usuário deve poder se cadastrar no sistema[OK]
-3. O usuário deve poder se autenticar no sistema[OK]
-4. O usuário pode criar um grupo de usuários (tem nome e mensagens), o qual ele é ADMIN[OK]
-5. O ADMIN do grupo pode adicionar outros membros, associando uma permissão de escrita ou leitura no grupo, informando o email do usuário. Mostrando uma mensagem de sucesso ou erro caso o usuário não exista.[OK]
-6. O usuário administrador e usuários com permissão de escrita podem submeter mensagens no grupo.[OK]
-7. Os membros do grupo podem se enxergar com as suas permissões e também visualizar as mensagens (10 por página)[OK]
-8. O usuário pode ver a lista de grupos dos quais faz parte como membro ou administrador[OK]
-9. O usuário pode se remover de um grupo e, o usuário ADMIN também pode remover alguém do grupo[OK]
-10. (Deploy Heroku + O Código será avaliado em relação a organização de acordo com o que foi apresentado nas aulas[OK].
+## Description
+***Simple group chat created to System Development II Discipline at IFRS,created with nodejs and ejs,using MVC pattern and Postgresql.You can find the requirements for this project [here](https://github.com/Chipskein/PolarTalk/blob/main/REQ.pdf)*** 
+## How to run
+1. ### Clone Repository
+2. ### Install Dependencies
+            npm install
+3. ### Run Script
+            npm run dev
+            or
+            npm start
