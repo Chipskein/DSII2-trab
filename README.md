@@ -4,6 +4,9 @@
 
 ## Description
 ***Simple group chat created to System Development II Discipline at IFRS,created with nodejs and ejs,using MVC pattern and Postgresql.You can find the requirements for this project [here](https://github.com/Chipskein/PolarTalk/blob/main/REQ.pdf)*** 
+
+## You can test [here](https://polartalk.herokuapp.com/)
+
 ## How to run
 1. ### Clone Repository
 2. ### Install Dependencies
