@@ -18,7 +18,8 @@
                             <div class="msg-div">
                                 <div class="msg-img"style="background-image:url('<%=msg.userimg%>');"> </div><br>
                                 <div class="msg-info">
-                                    <p class="msg-username"><%=msg.username%></p><br>
+                                    <p class="msg-username"><%=msg.username%></p>
+                                    <p class="msg">at <%=new Date(msg.messagedata).toString().substr(0,24)%></p><br>
                                     <p class="msg"><%=msg.message%></p><br>
                                 </div>
                             </div>

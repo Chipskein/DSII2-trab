@@ -137,10 +137,13 @@ body{
 .lateral-container2{
     background-color: var(--secondary2-color); 
     width: 70%;
+    height: 800px;
     border: solid 2px var(--primary-color);  
     border-radius: 50px;
 }
 .msgs-divs{
+    height: 750px;
+    overflow-y: scroll;
 }
 .msg-div{
     margin: 5%;
