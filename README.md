@@ -7,11 +7,15 @@
 
 ## You can test [here](https://polartalk.herokuapp.com/)
 
-## How to run
+## How to run locally
+
 1. ### Clone Repository
-2. ### Install Dependencies
+2. ### Prepare database 
+    Create a heroku-postgres database as in src/database/database.sql
+    and put DATABASE_URL in a .env file as in .env.example 
+3. ### Install Dependencies
             npm install
-3. ### Run Script
+4. ### Run Script
             npm run dev
             or
             npm start
