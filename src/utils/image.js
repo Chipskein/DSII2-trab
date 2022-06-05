@@ -2,8 +2,8 @@ const fs=require('fs');
 const {ImgurClient}=require('imgur')
 const client = new ImgurClient(
     {
-        clientId: '430c247687d3cf1',
-        clientSecret: '8a20068c2229c2786afed30284eeb25d07a0a7df',
+        clientId: process.env.IMGUR_CLIENT_ID,
+        clientSecret: process.env.IMGUR_CLIENT_SECRET,
     }
 );
 
